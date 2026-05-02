@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Classroom</title>
+    <link rel="icon" href="https://www.gstatic.com/images/branding/product/1x/classroom_48dp.png" type="image/png">
+    <style>
+        :root {
+            --bg-black: #000000;
+            --text-white: #ffffff;
+            --accent-gradient: linear-gradient(90deg, #ff0000, #ffff00);
+            --nav-bg: rgba(15, 15, 15, 0.85);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Banner */
+        #banner {
+            background: #ff0000;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        /* Homepage Layout */
+        #landing-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .main-box {
+            width: 80%;
+            max-width: 900px;
+            border: 1px solid #333;
+            display: flex;
+            height: 250px;
+            margin-top: 30px;
+        }
+
+        .option-box {
+            flex: 1;
+            padding: 25px;
+            text-align: left;
+            border: 1px solid #333;
+            transition: 0.2s;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .option-box.active {
+            background-color: #1a1a1a;
+            border: 2px solid #fff;
+        }
+
+        /* Content Pages */
+        .page {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            padding-top: 40px;
+            box-sizing: border-box;
+        }
+
+        .gradient-text {
+            font-size: 64px;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1.5px white;
+            margin: 20px 0;
+            text-transform: uppercase;
+        }
+
+        .quote-section {
+            color: #888;
+            font-size: 24px;
+            font-style: italic;
+        }
+
+        .anonymous {
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .id-text {
+            color: #888;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        /* Navbar Styling */
+        #navbar-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 10px 30px;
+            display: none; /* Hidden on landing */
+            gap: 40px;
+            border: 1px solid #333;
+            z-index: 10000;
+        }
+
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            opacity: 1;
+        }
+
+        .nav-btn img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-label {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Iframe */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .countdown {
+            font-size: 32px;
+            margin-top: 20px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="banner">This page is experimental, please use the previous version at <a href="https://spyder-network.vercel.app" style="color:white">https://spyder-network.vercel.app</a></div>
+
+    <div id="landing-page">
+        <h1>Welcome to SpyderSammy Version 2.0!</h1>
+        <p>Use the arrow keys to navigate between options and the enter key to choose it!</p>
+        
+        <div class="main-box">
+            <div class="option-box active" id="opt-0">Continue without Cloak</div>
+            <div class="option-box" id="opt-1">Continue with about:blank cloak</div>
+            <div class="option-box" id="opt-2">Restart SpyderSammy v2.0</div>
+        </div>
+    </div>
+
+    <div id="home" class="page" style="text-align: center; justify-content: center; display: none; flex-direction: column;">
+        <div class="gradient-text">SpyderSammy 2.0</div>
+        <div class="quote-section">"freedom is yours and noone can stop it"</div>
+        <div class="anonymous">- Anonymous</div>
+        <div class="id-text">222</div>
+        <p style="margin-top:40px;">choose an option below to get started</p>
+    </div>
+
+    <div id="games" class="page" style="text-align: center;">
+        <h1>This page is coming soon</h1>
+        <div id="games-timer" class="countdown"></div>
+    </div>
+
+    <div id="ai" class="page" style="text-align: center;">
+        <h1>This page is coming soon</h1>
+        <div id="ai-timer" class="countdown"></div>
+    </div>
+
+    <div id="search" class="page">
+        <iframe src="https://spyder-network.vercel.app/d"></iframe>
+    </div>
+
+    <div id="settings" class="page" style="text-align: center;">
+        <h1>This page is coming soon</h1>
+        <div id="settings-timer" class="countdown"></div>
+    </div>
+
+    <div id="navbar-container">
+        <div class="nav-btn active" onclick="nav('home')">
+            <img src="https://img.icons8.com/material-rounded/48/home.png" alt="Home">
+            <div class="nav-label">Home</div>
+        </div>
+        <div class="nav-btn" onclick="nav('games')">
+            <img src="https://img.icons8.com/material-rounded/48/controller.png" alt="Games">
+            <div class="nav-label">Games</div>
+        </div>
+        <div class="nav-btn" onclick="nav('ai')">
+            <img src="https://img.icons8.com/material-rounded/48/robot-tatu.png" alt="AI">
+            <div class="nav-label">AI</div>
+        </div>
+        <div class="nav-btn" onclick="nav('search')">
+            <img src="https://img.icons8.com/material-rounded/48/search.png" alt="Search">
+            <div class="nav-label">Search</div>
+        </div>
+        <div class="nav-btn" onclick="nav('settings')">
+            <img src="https://img.icons8.com/material-rounded/48/settings.png" alt="Settings">
+            <div class="nav-label">Settings</div>
+        </div>
+    </div>
+
+    <script>
+        let currentIdx = 0;
+        const options = ["opt-0", "opt-1", "opt-2"];
+
+        // Landing Navigation
+        window.addEventListener('keydown', (e) => {
+            if (document.getElementById('landing-page').style.display === 'none') return;
+
+            if (e.key === "ArrowRight") {
+                currentIdx = (currentIdx + 1) % 3;
+                updateSelection();
+            } else if (e.key === "ArrowLeft") {
+                currentIdx = (currentIdx - 1 + 3) % 3;
+                updateSelection();
+            } else if (e.key === "Enter") {
+                if(currentIdx === 0) nav('home');
+                if(currentIdx === 2) location.reload();
+            }
+        });
+
+        function updateSelection() {
+            options.forEach((id, i) => {
+                document.getElementById(id).classList.toggle('active', i === currentIdx);
+            });
+        }
+
+        // Page Switching
+        function nav(pageId) {
+            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('banner').style.display = 'none';
+            document.getElementById('navbar-container').style.display = 'flex';
+            
+            document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+            const target = document.getElementById(pageId);
+            target.style.display = (pageId === 'home') ? 'flex' : 'block';
+
+            // Update Nav Active State
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            const index = ['home', 'games', 'ai', 'search', 'settings'].indexOf(pageId);
+            document.querySelectorAll('.nav-btn')[index].classList.add('active');
+        }
+
+        // Countdown Logic
+        function updateCountdown() {
+            const target = new Date("June 14, 2026 00:00:00").getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = target - now;
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                const ms = Math.floor(diff % 1000);
+
+                const str = `${d}d ${h}h ${m}m ${s}s ${ms}ms`;
+                ['games-timer', 'ai-timer', 'settings-timer'].forEach(id => {
+                    document.getElementById(id).innerText = str;
+                });
+            }, 50);
+        }
+        updateCountdown();
+    </script>
+</body>
+</html>
