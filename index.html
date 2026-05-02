@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Classroom</title>
     <link rel="icon" href="https://www.gstatic.com/images/branding/product/1x/classroom_48dp.png" type="image/png">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         :root {
             --bg: #000000;
@@ -18,12 +19,12 @@
             padding: 0;
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow: hidden;
             height: 100%;
         }
 
-        /* Experimental Banner */
+        /* Banner */
         #exp-banner {
             background: #ff0000;
             color: #fff;
@@ -34,6 +35,14 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+        }
+
+        /* Google Login Top Right */
+        #google-login-btn {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            z-index: 1001;
         }
 
         /* Landing Page (Boot Loader Style) */
@@ -48,34 +57,34 @@
         .boot-loader-title {
             color: #555;
             font-size: 14px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .main-container {
-            width: 95%;
+            width: 90%;
+            max-width: 1200px;
             border: 1px solid #333;
-            border-radius: 4px;
+            border-radius: 8px;
             overflow: hidden;
-            background: #050505;
         }
 
         .option {
-            padding: 12px 20px;
-            border-bottom: 1px solid #1a1a1a;
+            padding: 15px 25px;
+            background: #111;
+            border-bottom: 1px solid #222;
             cursor: pointer;
+            transition: 0.2s;
             text-align: left;
-            color: #666;
-            font-size: 15px;
-            transition: 0.1s;
+            color: #888;
         }
 
         .option.active {
-            background: #111;
+            background: #222;
             color: #fff;
-            border-left: 3px solid #fff;
+            border-left: 4px solid #fff;
         }
 
-        /* Page Content */
+        /* Home Content */
         .page { display: none; height: 100vh; width: 100%; position: relative; }
         
         #home-content {
@@ -87,96 +96,91 @@
         }
 
         .spyder-title {
-            font-size: clamp(40px, 10vw, 90px);
+            font-size: 80px;
             font-weight: 900;
             background: var(--accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 1.5px white;
+            -webkit-text-stroke: 2px white;
             margin: 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: -2px;
         }
 
-        .quote { color: grey; font-size: 22px; margin-top: 25px; font-style: italic; }
-        .anon { color: grey; margin-top: 8px; font-size: 18px; }
-        .number-tag { color: grey; font-size: 14px; margin-top: 8px; }
+        .quote { color: grey; font-size: 24px; margin-top: 20px; font-style: italic; }
+        .anon { color: grey; margin-top: 5px; }
+        .number-tag { color: grey; font-size: 12px; margin-top: 5px; }
 
         /* Floating Navbar */
         #navbar {
             position: fixed;
-            bottom: 25px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--nav-bg);
-            border: 1px solid #222;
-            border-radius: 20px;
-            padding: 12px 35px;
+            border: 1px solid #333;
+            border-radius: 25px;
+            padding: 10px 30px;
             display: flex;
             align-items: center;
-            gap: 45px;
-            backdrop-filter: blur(12px);
+            gap: 40px;
+            backdrop-filter: blur(10px);
             z-index: 10000;
         }
 
-        .nav-item { cursor: pointer; opacity: 0.6; transition: 0.3s; }
-        .nav-item:hover { opacity: 1; transform: translateY(-2px); }
-        .nav-item svg { width: 26px; height: 26px; fill: white; display: block; }
+        .nav-item { cursor: pointer; opacity: 0.7; transition: 0.3s; display: flex; align-items: center; }
+        .nav-item:hover { opacity: 1; transform: scale(1.1); }
+        .nav-item svg { width: 28px; height: 28px; fill: white; }
 
-        /* Cookie Consent */
+        #user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid white;
+            display: none;
+        }
+
+        /* Cookie Bar */
         #cookie-bar {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: #0a0a0a;
+            background: #111;
             padding: 15px;
             text-align: center;
-            border-top: 1px solid #222;
+            border-top: 1px solid #333;
             z-index: 11000;
-            font-size: 14px;
         }
 
         .btn-accept {
-            background: #fff;
-            color: #000;
+            background: white;
+            color: black;
             border: none;
-            padding: 6px 18px;
-            margin-left: 15px;
+            padding: 5px 15px;
+            margin-left: 20px;
             cursor: pointer;
-            border-radius: 4px;
-            font-weight: bold;
+            border-radius: 5px;
         }
 
-        iframe { width: 100%; height: 100%; border: none; padding-bottom: 80px; box-sizing: border-box; }
-
-        .coming-soon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-
-        .timer-display {
-            font-family: monospace;
-            font-size: 28px;
-            margin-top: 20px;
-            color: #aaa;
-        }
+        iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
 
     <div id="exp-banner">This page is experimental, please use the previous version at <a href="https://spyder-network.vercel.app" style="color:white">https://spyder-network.vercel.app</a></div>
 
+    <div id="google-login-btn">
+        <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-callback="handleCredentialResponse"></div>
+        <div class="g_id_signin" data-type="standard"></div>
+    </div>
+
     <div id="landing">
-        <div class="boot-loader-title">Terbium Boot Loader - Version 2.3.0</div>
+        <div class="boot-loader-title">SpyderSammy Boot Loader - Version 2.0.0</div>
         <div class="main-container">
             <div class="option active" id="opt0">Continue without Cloak</div>
             <div class="option" id="opt1">Continue with about:blank cloak</div>
             <div class="option" id="opt2">Restart SpyderSammy v2.0</div>
         </div>
-        <p style="margin-top:25px; font-size: 13px; color: #444;">Use the arrow keys to navigate between options and the enter key to choose it!</p>
+        <p style="margin-top:20px; font-size: 14px; color: #555;">Use the arrow keys to navigate between options and the enter key to choose it!</p>
     </div>
 
     <div id="home" class="page">
@@ -185,52 +189,49 @@
             <div class="quote">"freedom is yours and noone can stop it"</div>
             <div class="anon">- Anonymous</div>
             <div class="number-tag">222</div>
-            <p style="margin-top: 45px; font-size: 14px; letter-spacing: 1px;">Choose an option below to get started</p>
+            <p style="margin-top: 30px;">Choose an option below to get started</p>
         </div>
     </div>
 
-    <div id="games" class="page"><div class="coming-soon"><h1>This page is coming soon</h1><div id="g-timer" class="timer-display"></div></div></div>
-    <div id="ai" class="page"><div class="coming-soon"><h1>This page is coming soon</h1><div id="a-timer" class="timer-display"></div></div></div>
+    <div id="games" class="page" style="text-align:center; padding-top:20vh;"><h1>This page is coming soon</h1><div id="g-timer"></div></div>
+    <div id="ai" class="page" style="text-align:center; padding-top:20vh;"><h1>This page is coming soon</h1><div id="a-timer"></div></div>
     <div id="search" class="page"><iframe src="https://spyder-network.vercel.app/d"></iframe></div>
-    <div id="settings" class="page"><div class="coming-soon"><h1>This page is coming soon</h1><div id="s-timer" class="timer-display"></div></div></div>
+    <div id="settings" class="page" style="text-align:center; padding-top:20vh;"><h1>This page is coming soon</h1><div id="s-timer"></div></div>
 
     <div id="navbar" style="display:none;">
-        <div class="nav-item" title="Home" onclick="show('home')"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
-        <div class="nav-item" title="Games" onclick="show('games')"><svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
-        <div class="nav-item" title="AI" onclick="show('ai')"><svg viewBox="0 0 24 24"><path d="M12,2A2,2 0 0,1 14,4A2,2 0 0,1 12,6A2,2 0 0,1 10,4A2,2 0 0,1 12,2M9,7H15A2,2 0 0,1 17,9V14.5A2.5,2.5 0 0,1 14.5,17H14V22H10V17H9.5A2.5,2.5 0 0,1 7,14.5V9A2,2 0 0,1 9,7Z"/></svg></div>
-        <div class="nav-item" title="Search" onclick="show('search')"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
-        <div class="nav-item" title="Settings" onclick="show('settings')"><svg viewBox="0 0 24 24"><path d="M19.14,12.94C19.14,12.94 19.14,12.94 19.14,12.94L19.14,12.94ZM12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.33 14.87,5.09L14.49,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.51,2.42L9.13,5.09C8.53,5.33 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.53,18.67 9.13,18.91L9.51,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.49,21.58L14.87,18.91C15.47,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg></div>
+        <div class="nav-item" onclick="show('home')"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+        <div class="nav-item" onclick="show('games')"><svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
+        <div class="nav-item" onclick="show('ai')"><svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg></div>
+        <div class="nav-item" onclick="show('search')"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+        <div class="nav-item" onclick="show('settings')"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L3.25 8.87c-.12.2-.07.47.12.61l2.03 1.58c-.04.3-.06.61-.06.94s.02.64.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.2.07-.47-.12-.61l-2.03-1.58zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg></div>
+        <img id="user-avatar" src="" alt="User">
     </div>
 
     <div id="cookie-bar">
-        We use cookies to ensure you get the best experience on our website.
-        <button class="btn-accept" onclick="this.parentElement.style.display='none'">I Agree</button>
+        We use cookies to ensure you get the best experience. 
+        <button class="btn-accept" onclick="this.parentElement.remove()">I Agree</button>
     </div>
 
     <script>
         let index = 0;
-        const opts = document.querySelectorAll('.option');
+        const options = document.querySelectorAll('.option');
 
-        // Initial Arrow Key Navigation
+        // Navigation
         window.addEventListener('keydown', (e) => {
             if (document.getElementById('landing').style.display === 'none') return;
-            
-            if (e.key === 'ArrowDown') {
-                index = (index + 1) % 3;
-            } else if (e.key === 'ArrowUp') {
-                index = (index - 1 + 3) % 3;
-            }
-            
-            opts.forEach((o, i) => o.classList.toggle('active', i === index));
-            
-            if (e.key === 'Enter') {
-                if (index === 0) startApp();
-                if (index === 1) cloakLaunch();
-                if (index === 2) location.reload();
-            }
+            if (e.key === 'ArrowDown') index = (index + 1) % 3;
+            if (e.key === 'ArrowUp') index = (index - 1 + 3) % 3;
+            options.forEach((o, i) => o.classList.toggle('active', i === index));
+            if (e.key === 'Enter') selectOption();
         });
 
-        function cloakLaunch() {
+        function selectOption() {
+            if (index === 0) startApp();
+            if (index === 1) cloakApp();
+            if (index === 2) location.reload();
+        }
+
+        function cloakApp() {
             let win = window.open();
             win.document.body.style.margin = '0';
             win.document.body.style.height = '100vh';
@@ -257,8 +258,8 @@
             if(id === 'home') document.getElementById('home-content').style.display = 'flex';
         }
 
-        // Countdown Timer Logic
-        function startTimers() {
+        // Countdown
+        function timer() {
             const target = new Date("June 14, 2026 00:00:00").getTime();
             setInterval(() => {
                 const now = new Date().getTime();
@@ -268,16 +269,22 @@
                 const mins = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
                 const secs = Math.floor((d % (1000 * 60)) / 1000);
                 const ms = d % 1000;
-                
-                const timeStr = `${days}d ${hours}h ${mins}m ${secs}s ${ms}ms`;
-                document.getElementById('g-timer').innerText = timeStr;
-                document.getElementById('a-timer').innerText = timeStr;
-                document.getElementById('s-timer').innerText = timeStr;
-            }, 60);
+                const str = `${days}d ${hours}h ${mins}m ${secs}s ${ms}ms`;
+                document.getElementById('g-timer').innerText = str;
+                document.getElementById('a-timer').innerText = str;
+                document.getElementById('s-timer').innerText = str;
+            }, 50);
         }
-        startTimers();
+        timer();
 
-        // Check if cloaked state is active
+        function handleCredentialResponse(response) {
+            const data = JSON.parse(atob(response.credential.split('.')[1]));
+            document.getElementById('user-avatar').src = data.picture;
+            document.getElementById('user-avatar').style.display = 'block';
+            document.getElementById('google-login-btn').style.display = 'none';
+        }
+
+        // Check if coming from cloaked launch
         if (window.location.search.includes("cloaked=true")) {
             startApp();
         }
