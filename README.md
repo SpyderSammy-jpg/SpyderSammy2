@@ -1,1 +1,1 @@
-# SpyderSammy2
+# SpyderSammy Version 2.0
