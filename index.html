@@ -1,452 +1,1371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IXL | Math, Language Arts, Science, Social Studies, and Spanish</title>
-  <meta name="description"        content="IXL is the world's most popular subscription-based learning site for K–12. Used by over 17 million students, IXL provides personalized learning in more than 17,000 topics, covering math, language arts, science, social studies, and Spanish. Interactive questions, awards, and certificates keep kids motivated as they master skills.">
-  <meta name="keywords"           content="online learning, education, K-12, students, teachers, math practice, reading comprehension, science education, test preparation, homework help">
-  <meta name="author"             content="IXL Learning">
-  <meta name="robots"             content="index, follow">
-  <meta name="language"           content="English">
-  <meta name="revisit-after"      content="7 days">
-  <meta name="rating"             content="general">
-  <meta name="distribution"       content="global">
-  <meta name="topic"              content="Education">
-  <meta name="category"           content="Education, Learning, K-12">
-  <meta name="coverage"           content="Worldwide">
-  <meta name="identifier-URL"     content="https://www.ixl.com">
-  <meta name="subject"            content="Educational Resources and Online Learning">
-  <meta name="copyright"          content="IXL Learning">
-  <meta name="audience"           content="Students, Teachers, Parents">
-  <meta name="target"             content="K-12 education, homeschool, tutoring">
-  <meta property="og:title"       content="IXL | Math, Language Arts, Science, Social Studies, and Spanish">
-  <meta property="og:description" content="IXL is the world's most popular subscription-based learning site for K–12. Used by over 17 million students, IXL provides personalized learning in more than 17,000 topics, covering math, language arts, science, social studies, and Spanish. Interactive questions, awards, and certificates keep kids motivated as they master skills.">
-  <meta property="og:image"       content="https://www.ixl.com/dv3/powZqMuTE7du4asFrVyNGxxoqkw/yui3/opengraph/assets/general_us.png">
-  <meta property="og:site_name"   content="IXL Learning">
-  <meta name="google-adsense-account"   content="ca-pub-7164184929971692">
-  <meta name="msapplication-TileColor" content="#00ffa6">
-  <link rel="preconnect"  href="https://flushpersist.com">
-  <link rel="preconnect"  href="https://www.googletagmanager.com">
-  <link rel="preconnect"  href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://wsrv.nl">
-  <link rel="dns-prefetch" href="https://www.highperformanceformat.com">
-  <link rel="preload" href="css/themes.css" as="style">
-  <link rel="preload" href="css/style.css"  as="style">
-  <link rel="stylesheet" href="css/themes.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/ob-fonts.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/ob-fonts.css"></noscript>
-  <script src="js/themes.js" defer></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ESCLX91T0"></script>
-  <script>window.dataLayer = window.dataLayer || [];function gtag() { dataLayer.push(arguments); }gtag('js', new Date());gtag('config', 'G-8ESCLX91T0');</script>
+  <meta charset="UTF-8" />
+  <title>Home - Classroom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Default favicon (Google Classroom style) -->
+  <link id="dynamic-favicon" rel="icon" href="https://ssl.gstatic.com/classroom/ic_product_classroom_32.png" />
+  <style>
+    :root {
+      --bg-color: #000000;
+      --text-color: #ffffff;
+      --accent-red: #ff3333;
+      --accent-yellow: #ffcc00;
+      --panel-bg: rgba(15, 15, 15, 0.95);
+      --panel-border: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .content-wrapper {
+      padding-bottom: 80px; /* space for navbar */
+      min-height: 100vh;
+    }
+
+    .centered-page {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Header with logo */
+    header#global-header {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #111;
+      background: rgba(0, 0, 0, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 9000;
+    }
+
+    .logo-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-wrapper img {
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .logo-version {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ff3333;
+      text-shadow: 0 0 4px #ffcc00;
+    }
+
+    .subtitle {
+      margin-top: 5px;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    .primary-text {
+      margin-top: 20px;
+      font-size: 1.05rem;
+      max-width: 700px;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+    }
+
+    button.red {
+      background-color: var(--accent-red);
+      color: #ffffff;
+    }
+
+    button.yellow {
+      background-color: var(--accent-yellow);
+      color: #000000;
+    }
+
+    button.outline {
+      background-color: transparent;
+      border: 1px solid var(--panel-border);
+      color: var(--text-color);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .form-card {
+      background-color: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      max-width: 500px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      background-color: #111;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .form-group input[type="color"] {
+      padding: 0;
+      height: 36px;
+      background-color: transparent;
+      border: none;
+    }
+
+    .error-text {
+      color: #ff6666;
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    .small-text {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .warning-text {
+      color: #ff6666;
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    /* Main menu box (inspired by TB React menu) */
+    .menu-box {
+      background: radial-gradient(circle at top, #1f2933 0, #020617 55%, #000000 100%);
+      border-radius: 10px;
+      border: 1px solid #333;
+      padding: 20px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 500px;
+      text-align: left;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .menu-title {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      opacity: 0.8;
+    }
+
+    .menu-item {
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-size: 0.98rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #e5e5e5;
+    }
+
+    .menu-item.selected {
+      background: linear-gradient(90deg, #f97316 0, #facc15 100%);
+      color: #000;
+      font-weight: 600;
+    }
+
+    .menu-hint {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      color: #e5e5e5;
+    }
+
+    /* Login screen (inspired by Windows lock screen) */
+    .login-screen {
+      position: relative;
+      min-height: 100vh;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .login-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url("login-background.jpg"); /* replace with your aurora image filename */
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.7);
+      z-index: -1;
+    }
+
+    .login-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .login-time {
+      font-size: 3.2rem;
+      font-weight: 300;
+    }
+
+    .login-date {
+      margin-top: 5px;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .login-user-card {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .login-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at top, #4b5563 0, #111827 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .login-username {
+      margin-top: 12px;
+      font-size: 1.1rem;
+    }
+
+    .login-input {
+      margin-top: 15px;
+      width: 260px;
+    }
+
+    .login-input input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .login-hint {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* Home page */
+    .home-tagline {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    /* Iframe pages */
+    .iframe-container {
+      width: 100%;
+      height: calc(100vh - 80px);
+      border: none;
+    }
+
+    .iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: #000;
+    }
+
+    /* Navbar (inspired by your navbar image) */
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-top: 1px solid #222;
+      z-index: 9999;
+      backdrop-filter: blur(6px);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.7rem;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    .nav-item span.icon {
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+    }
+
+    .nav-item.active {
+      opacity: 1;
+      color: var(--accent-yellow);
+    }
+
+    /* Settings page (inspired by your settings panel) */
+    .settings-page {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .settings-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .settings-tab-btn {
+      flex: 1;
+      text-align: center;
+      padding: 10px 0;
+      border-radius: 8px;
+      background-color: #111;
+      border: 1px solid #333;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #e5e5e5;
+    }
+
+    .settings-tab-btn.active {
+      border-color: var(--accent-yellow);
+      background: linear-gradient(90deg, #1f2933 0, #020617 100%);
+    }
+
+    .settings-section-card {
+      background-color: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .settings-section-title {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .settings-row {
+      margin-bottom: 15px;
+    }
+
+    .settings-row label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .settings-row input,
+    .settings-row select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      background-color: #111;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .settings-row input[type="file"] {
+      padding: 4px;
+      background-color: transparent;
+      border: none;
+    }
+
+    .settings-actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #333;
+    }
+
+    @media (max-width: 600px) {
+      .login-time {
+        font-size: 2.4rem;
+      }
+      .logo-wrapper img {
+        height: 32px;
+      }
+      .logo-version {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
-<body data-theme="dark">
-  <svg style="display:none" aria-hidden="true"><symbol id="icon-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></symbol><symbol id="icon-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></symbol><symbol id="icon-navbar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></symbol><symbol id="icon-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></symbol><symbol id="icon-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></symbol><symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol><symbol id="icon-timer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></symbol><symbol id="icon-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol><symbol id="icon-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></symbol><symbol id="icon-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></symbol><symbol id="icon-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol><symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol><symbol id="icon-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></symbol><symbol id="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></symbol><symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol><symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol><symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol><symbol id="icon-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></symbol><symbol id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></symbol><symbol id="icon-speed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol><symbol id="icon-data" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol></svg>
-  <canvas id="particle-canvas"></canvas>
-  <div class="content">
-    <div class="flex h-screen">
-      <aside id="sidebar">
-        <nav>
-          <ul>
-            <li>
-              <button class="sidebar-btn nav-button" data-view="home-page" aria-label="Home">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-              </button>
-            </li>
+<body>
+  <div class="content-wrapper">
+    <!-- Global header with logo (shown on all internal pages) -->
+    <header id="global-header" class="hidden">
+      <div class="logo-wrapper">
+        <!-- Replace src with your actual SpyderSammy logo filename -->
+        <img src="spyder-logo.png" alt="SpyderSammy Logo" />
+        <span class="logo-version">2.0</span>
+      </div>
+    </header>
 
-            <li>
-              <button class="sidebar-btn nav-button" data-view="lessons" aria-label="Lessons">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
-              </button>
-            </li>
+    <!-- Onboarding / first-time setup -->
+    <section id="onboarding-page" class="centered-page hidden">
+      <div class="logo-wrapper" style="margin-bottom:10px;">
+        <img src="spyder-logo.png" alt="SpyderSammy Logo" />
+        <span class="logo-version">2.0</span>
+      </div>
+      <p class="primary-text">
+        Welcome to SpyderSammy Version 2.0! We are proud to serve you again but now with a brand new and more influential model than ever before!
+      </p>
 
-            <li>
-              <button class="sidebar-btn nav-button" data-view="e" aria-label="Extras">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-              </button>
-            </li>
-            <li>
-              <button class="sidebar-btn nav-button" data-view="ai" aria-label="AI Chat">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-              </button>
-            </li>
+      <button id="start-onboarding-btn" class="red">Let's begin!</button>
 
-            <li>
-              <button class="sidebar-btn nav-button" data-view="p" aria-label="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
-              </button>
-            </li>
+      <div id="onboarding-form" class="form-card hidden">
+        <div class="form-group">
+          <label for="proxy-service-select">
+            What do you want your proxy service to be? Don't know… Go with Scramjet!
+          </label>
+          <select id="proxy-service-select">
+            <option value="ultraviolet">Ultraviolet</option>
+            <option value="scramjet" selected>Scramjet</option>
+          </select>
+        </div>
 
-            <li>
-              <button class="sidebar-btn nav-button" data-view="s" aria-label="Settings">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      <div id="home-root" class="view">
-        <div id="dashboard-view" style="position:relative; padding-top:90px;">
-          <div id="home-leaderboard-ad"></div>
+        <h3 style="margin-top:10px; margin-bottom:10px;">Set up your account:</h3>
+        <div class="form-group">
+          <label for="signup-username">Username</label>
+          <input type="text" id="signup-username" placeholder="Enter a username" />
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" placeholder="Enter a password" />
+        </div>
+        <div id="onboarding-error" class="error-text hidden"></div>
+        <button id="onboarding-done-btn" class="red">Done</button>
+      </div>
+    </section>
 
-          <div class="home-left">
-            <div class="typewriter-container">
-              <span class="static-text">Welcome to </span>
-              <span class="gradient-word" id="typewriter-word"></span>
-            </div>
-            <button class="play-btn" id="browse-btn">Play Lessons!</button>
-          </div>
+    <!-- Main menu page (boot-menu style) -->
+    <section id="main-menu-page" class="centered-page hidden">
+      <div class="logo-wrapper" style="margin-bottom:10px;">
+        <img src="spyder-logo.png" alt="SpyderSammy Logo" />
+        <span class="logo-version">2.0</span>
+      </div>
+      <p class="primary-text">
+        Use the arrow keys to navigate and Enter to choose an option.
+      </p>
 
-          <div class="home-right">
-            <div id="featured-unit" class="showcase-lesson" style="cursor:default;">
-              <img id="unit-thumbnail"src="/img/placeholder.png"alt=""width="280"height="200"style="opacity:0; transition:opacity 0.2s ease, transform 0.2s ease; background:#1a1a24; backface-visibility:hidden;"decoding="async"fetchpriority="high">
-              <div id="unit-heading" class="showcase-title">Loading...</div>
-            </div>
-          </div>
+      <div class="menu-box" id="main-menu-box">
+        <div class="menu-title">SpyderSammy 2.0 Boot Menu</div>
+        <div class="menu-item selected" data-index="0" data-action="no-cloak">
+          <span>Continue without cloaking!</span>
+        </div>
+        <div class="menu-item" data-index="1" data-action="about-blank">
+          <span>Continue with about:blank cloaking!</span>
+        </div>
+        <div class="menu-item" data-index="2" data-action="clear-data">
+          <span>Clear all data and restart SpyderSammy 2.0!</span>
+        </div>
+        <div class="menu-hint">
+          ↑ / ↓ to move • Enter to select
         </div>
       </div>
+    </section>
 
+    <!-- Fake Windows login screen -->
+    <section id="login-screen-page" class="login-screen hidden">
+      <div class="login-bg"></div>
+      <div class="login-content">
+        <div class="login-time" id="login-time">00:00</div>
+        <div class="login-date" id="login-date">Sunday, May 3 2026</div>
 
-      <div id="catalog-view" class="view hidden-view">
-        <div id="react-root"></div>
-      </div>
-
-
-      <div id="reader-view" class="view hidden-view">
-        <iframe id="content-frame"src="about:blank"allow="fullscreen; autoplay"loading="lazy"fetchpriority="low"></iframe>
-      </div>
-      <div id="explore-view" class="view hidden-view">
-        <div class="e-container" style="padding-top:110px; padding-bottom:80px;">
-          <div class="e-card" data-url="/movies/" data-title="Movies">
-            <div class="e-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
-            </div>
-            <h3 class="obfuscate">中乏乖义久乓</h3>
-            <p class="obfuscate">丷乁乔乃么一乍乏乖义久乓一乁乎乄一乍乏乒久丁</p>
+        <div class="login-user-card">
+          <div class="login-avatar" id="login-avatar">G</div>
+          <div class="login-username" id="login-username-label">Guest</div>
+          <div class="login-input">
+            <input type="password" id="login-password-input" placeholder="Password" />
           </div>
-          <div class="e-card" data-url="/filter-checker/" data-title="Filter Checker">
-            <div class="e-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5H3"/><path d="M16 12H3"/><path d="M11 19H3"/><path d="m15 18 2 2 4-4"/></svg>
-            </div>
-            <h3 class="obfuscate">並义乌乔久乒一丣么久乃之义乎乇</h3>
-            <p class="obfuscate">丣么久乃之一乆义乌乔久乒乓丁</p>
-          </div>
-          <div class="e-card" data-url="/ai.html" data-title="AI">
-            <div class="e-card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-            </div>
-            <h3 class="obfuscate">両丩</h3>
-            <p class="obfuscate">丣么乁乔一乗义乔么一両丩丁</p>
-          </div>
-
+          <div id="login-error" class="error-text hidden"></div>
+          <div class="login-hint">Press Enter to login</div>
         </div>
       </div>
-      <div id="research-view" class="view hidden-view h-full w-full">
-        <iframe data-src="/p.html"lass="w-full h-full border-none"allow="fullscreen"loading="lazy"fetchpriority="low"></iframe>
-      </div>
-      <div id="tutor-view" class="view hidden-view h-full w-full">
-        <iframe data-src="/ai.html"class="w-full h-full border-none"allow="fullscreen"loading="lazy"fetchpriority="low"></iframe>
-      </div>
-      <div id="preferences-view" class="view hidden-view">
-        <div id="settings-root">
-          <div class="s-tabs-container" style="width:100%; max-width:800px;">
-            <button class="tab-button active" data-tab="display">
-              <svg width="20" height="20"><use href="#icon-palette"/></svg>
-              <span class="obfuscate">両乐乐久乁乒乁乎乃久</span>
-            </button>
-            <button class="tab-button" data-tab="speed">
-              <svg width="20" height="20"><use href="#icon-speed"/></svg>
-              <span class="obfuscate">丰久乒乆乏乒乍乁乎乃久</span>
-            </button>
-            <button class="tab-button" data-tab="support">
-              <svg width="20" height="20"><use href="#icon-monitor"/></svg>
-              <span class="obfuscate">両乄乓</span>
-            </button>
-            <button class="tab-button" data-tab="privacy">
-              <svg width="20" height="20"><use href="#icon-eye"/></svg>
-              <span class="obfuscate">丣乌乏乁之义乎乇</span>
-            </button>
-            <button class="tab-button" data-tab="data">
-              <svg width="20" height="20"><use href="#icon-data"/></svg>
-              <span class="obfuscate">两乁乔乁</span>
-            </button>
-            <button class="tab-button" data-tab="profile">
-              <svg width="20" height="20"><use href="#icon-user"/></svg>
-              <span class="obfuscate">両乃乃乏乕乎乔</span>
-            </button>
-          </div>
-          <div id="settings-panels" style="width:100%; max-width:800px;">
-            <div class="settings-panel" data-panel="display">
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-palette"/></svg>
-                  <label class="obfuscate">临么久乍久</label>
-                </div>
-                <select id="theme-select">
-                  <option value="dark">Dark</option>
-                  <option value="light">Light</option>
-                  <option value="matrix">Matrix</option>
-                  <option value="blood">Blood</option>
-                  <option value="sunset">Sunset</option>
-                  <option value="forest">Forest</option>
-                  <option value="cyberpunk">Cyberpunk</option>
-                  <option value="midnight">Midnight</option>
-                  <option value="purplehaze">Purplehaze</option>
-                  <option value="coffee">Coffee</option>
-                  <option value="ocean">Ocean</option>
-                  <option value="aurora">Aurora</option>
-                  <option value="ember">Ember</option>
-                  <option value="graphite">Graphite</option>
-                  <option value="sakura">Sakura</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-image"/></svg>
-                  <label class="obfuscate">丢乁乃之乇乒乏乕乎乄一丩乍乁乇久</label>
-                </div>
-                <input type="file" id="bg-image-input" accept="image/*" class="file-input">
-                <div class="setting-value">
-                  <span id="bg-status" class="obfuscate" style="font-size:.875rem; opacity:0.7;">两久乆乁乕乌乔一丢乁乃之乇乒乏乕乎乄</span>
-                </div>
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-navbar"/></svg>
-                  <label class="obfuscate">丮乁乖乂乁乒一丰乏乓义乔义乏乎</label>
-                </div>
-                <select id="navbar-select">
-                  <option value="bottom">Bottom</option>
-                  <option value="top">Top</option>
-                  <option value="left">Left</option>
-                  <option value="right">Right</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-sparkle"/></svg>
-                  <label class="obfuscate">丰乁乒乔义乃乌久乓</label>
-                </div>
-                <div class="setting-control">
-                  <span class="obfuscate">严乎乁乂乌久一乐乁乒乔义乃乌久乓</span>
-                  <label class="toggle">
-                    <input type="checkbox" id="particles-toggle" checked>
-                    <span class="slider"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-sliders"/></svg>
-                  <label class="obfuscate">丰乁乒乔义乃乌久一两久乎乓义乔乙</label>
-                </div>
-                <input type="range" id="particle-density" min="10" max="200" value="25">
-                <div class="setting-value">
-                  <span id="density-value">25</span>
-                </div>
-              </div>
+    </section>
 
-            </div>
-            <div class="settings-panel hidden" data-panel="speed">
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-bolt"/></svg>
-                  <label class="obfuscate">丰久乒乆乏乒乍乁乎乃久一中乏乄久</label>
-                </div>
-                <div class="setting-control">
-                  <span class="obfuscate">丩乎乃乒久乁乓久一乐久乒乆乏乒乍乁乎乃久</span>
-                  <label class="toggle">
-                    <input type="checkbox" id="perf-toggle">
-                    <span class="slider"></span>
-                  </label>
-                </div>
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-timer"/></svg>
-                  <label class="obfuscate">丳么乏乗乃乁乓久一丳乐久久乄</label>
-                </div>
-                <select id="showcase-speed">
-                  <option value="1000">1 second</option>
-                  <option value="2000" selected>2 seconds</option>
-                  <option value="3000">3 seconds</option>
-                  <option value="5000">5 seconds</option>
-                </select>
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-music"/></svg>
-                  <label class="obfuscate">丧乁乍久一両乕乄义乏</label>
-                </div>
-                <div class="setting-control">
-                  <span class="obfuscate">中乕乔久一乇乁乍久一乁乕乄义乏一乂乙一乄久乆乁乕乌乔</span>
-                  <label class="toggle">
-                    <input type="checkbox" id="mute-toggle">
-                    <span class="slider"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="settings-panel hidden" data-panel="support">
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-monitor"/></svg>
-                  <label class="obfuscate">丳么乏乗一両乄乓</label>
-                </div>
-                <p class="setting-hint obfuscate">両乄乓一么久乌乐一之久久乐一乔么义乓一乓义乔久一乆乒久久一乁乎乄一乒乕乎乎义乎乇丮</p>
-                <div class="setting-control">
-                  <span class="obfuscate">严乎乁乂乌久一乁乄乓</span>
-                  <label class="toggle">
-                    <input type="checkbox" id="ads-toggle" checked>
-                    <span class="slider"></span>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="settings-panel hidden" data-panel="privacy">
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-file"/></svg>
-                  <label class="obfuscate">临乁乂一临义乔乌久</label>
-                </div>
-                <input type="text" id="cloak-title" placeholder="e.g., Google Docs">
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-image"/></svg>
-                  <label class="obfuscate">丣乕乓乔乏乍一並乁乖义乃乏乎</label>
-                </div>
-                <p class="setting-hint">
-                  <span class="obfuscate">丣乕乒乒久乎乔为</span>
-                  <span id="favicon-status" class="obfuscate">两久乆乁乕乌乔</span>
-                </p>
-                <input type="file" id="favicon-input" accept="image/*">
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-layout"/></svg>
-                  <label>about:blank</label>
-                </div>
-                <p class="setting-hint obfuscate">丯乐久乎乓一乓义乔久一义乎一乁乂乏乕乔为乂乌乁乎之一乔乁乂一乁乎乄一乄久乌久乔久乓一乔乁乂一么义乓乔乏乒乙</p>
-                <button class="save-btn" id="aboutblank-btn">about:blank</button>
-              </div>
-            </div>
-            <div class="settings-panel hidden" data-panel="data">
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-download"/></svg>
-                  <label class="obfuscate">严乘乐乏乒乔一两乁乔乁</label>
-                </div>
-                <p class="setting-hint obfuscate">两乏乗乎乌乏乁乄一乁乌乌一乙乏乕乒一乓久乔乔义乎乇乓丌一乔么久乍久乓丌一乐乒乏乇乒久乓乓一义乎乔乏一乁一乆义乌久丮</p>
-                <button class="save-btn" id="export-btn" class="obfuscate">两乏乗乎乌乏乁乄一並义乌久</button>
-              </div>
-              <div class="setting-item">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-upload"/></svg>
-                  <label class="obfuscate">丩乍乐乏乒乔一丳久乔乔义乎乇乓</label>
-                </div>
-                <p class="setting-hint obfuscate">丵乐乌乏乁乄一乁一乆义乌久一乔乏一乒久乓乔乏乒久一久乖久乒乙乔么义乎乇丮</p>
-                <input type="file" id="import-input" accept=".json">
-                <p class="setting-status" id="import-status" style="display:none;"></p>
-              </div>
-              <div class="setting-item setting-danger">
-                <div class="setting-header">
-                  <svg width="20" height="20"><use href="#icon-trash"/></svg>
-                  <label class="obfuscate">串久乓久乔一両乌乌一两乁乔乁</label>
-                </div>
-                <p class="setting-hint obfuscate">丰久乒乍乁乎久乎乔乌乙一乄久乌久乔久一乁乌乌一乓久乔乔义乎乇乓丌一乌久乓乓乏乎一乐乒乏乇乒久乓乓丌一乁乎乄一乓乁乖久乄一乄乁乔乁丮</p>
-                <button class="save-btn save-btn-danger" id="reset-btn" class="obfuscate">串久乓久乔一両乌乌一两乁乔乁</button>
-              </div>
-            </div>
-            <div class="settings-panel hidden" data-panel="profile">
-              <div id="auth-signin-panel" class="setting-item" style="text-align:center; padding:2rem;">
-                <div class="setting-header" style="justify-content:center; margin-bottom:1rem;">
-                  <svg width="20" height="20"><use href="#icon-user"/></svg>
-                  <label class="obfuscate">両乃乃乏乕乎乔</label>
-                </div>
-                <p class="setting-hint obfuscate" style="margin-bottom:1rem;">丳义乇乎一义乎一乔乏一乍乁乎乁乇久一乙乏乕乒一乁乃乃乏乕乎乔一乓久乔乔义乎乇乓丮</p>
-                <a href="/login/?redirect=/"
-                   style="display:block; width:100%; margin-top:0.75rem; padding:0.65rem 1.25rem;
-                          font-size:0.85rem; font-weight:600; border-radius:6px;
-                          background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15);
-                          color:rgba(255,255,255,0.9); text-align:center; text-decoration:none;"
-                   class="obfuscate">丳义乇乎一丩乎</a>
-                <a href="/signup/"
-                   style="display:block; width:100%; margin-top:0.5rem; padding:0.65rem 1.25rem;
-                          font-size:0.85rem; font-weight:600; border-radius:6px;
-                          background:transparent; border:1px solid rgba(255,255,255,0.1);
-                          color:rgba(255,255,255,0.6); text-align:center; text-decoration:none;"
-                   class="obfuscate">丣乒久乁乔久一両乃乃乏乕乎乔</a>
-              </div>
-              <div id="auth-profile-panel" style="display:none;">
-                <div class="setting-item">
-                  <div class="setting-header">
-                    <svg width="20" height="20"><use href="#icon-user"/></svg>
-                    <label class="obfuscate">丣么乁乎乇久一丵乓久乒乎乁乍久</label>
-                  </div>
-                  <input type="text" id="username-input" placeholder="New username">
-                  <button class="save-btn" id="username-btn" class="obfuscate">丵乐乄乁乔久一丵乓久乒乎乁乍久</button>
-                  <p class="setting-status" id="username-status" style="display:none;"></p>
-                </div>
-                <div class="setting-item">
-                  <div class="setting-header">
-                    <svg width="20" height="20"><use href="#icon-mail"/></svg>
-                    <label class="obfuscate">丣么乁乎乇久一严乍乁义乌</label>
-                  </div>
-                  <input type="email"    id="email-input" placeholder="New email">
-                  <input type="password" id="email-pass"  placeholder="Current password">
-                  <button class="save-btn" id="email-btn" class="obfuscate">丵乐乄乁乔久一严乍乁义乌</button>
-                  <p class="setting-status" id="email-status" style="display:none;"></p>
-                </div>
-                <div class="setting-item">
-                  <div class="setting-header">
-                    <svg width="20" height="20"><use href="#icon-lock"/></svg>
-                    <label class="obfuscate">丣么乁乎乇久一丰乁乓乓乗乏乒乄</label>
-                  </div>
-                  <input type="password" id="pass-current" placeholder="Current password">
-                  <input type="password" id="pass-new"     placeholder="New password">
-                  <input type="password" id="pass-confirm" placeholder="Confirm new password">
-                  <button class="save-btn" id="pass-btn" class="obfuscate">丵乐乄乁乔久一丰乁乓乓乗乏乒乄</button>
-                  <p class="setting-status" id="pass-status" style="display:none;"></p>
-                </div>
-                <div class="setting-item">
-                  <div class="setting-header">
-                    <svg width="20" height="20"><use href="#icon-logout"/></svg>
-                    <label class="obfuscate">丳义乇乎一丯乕乔</label>
-                  </div>
-                  <p class="setting-hint obfuscate">丳义乇乎一乏乕乔一乏乆一乙乏乕乒一乁乃乃乏乕乎乔一乏乎一乔么义乓一乄久乖义乃久丮</p>
-                  <button class="save-btn" id="signout-btn" class="obfuscate">丳义乇乎一丯乕乔</button>
-                </div>
-                <div class="setting-item setting-danger">
-                  <div class="setting-header">
-                    <svg width="20" height="20"><use href="#icon-trash"/></svg>
-                    <label class="obfuscate">两久乌久乔久一両乃乃乏乕乎乔</label>
-                  </div>
-                  <p class="setting-hint obfuscate">临么义乓一乐久乒乍乁乎久乎乔乌乙一乄久乌久乔久乓一乙乏乕乒一乁乃乃乏乕乎乔一乁乎乄一乃乁乎乎乏乔一乂久一乕乎乄乏乎久丮</p>
-                  <input type="password" id="delete-pass" placeholder="Enter your password to confirm">
-                  <button class="save-btn save-btn-danger" id="delete-btn" class="obfuscate">两久乌久乔久一中乙一両乃乃乏乕乎乔</button>
-                  <p class="setting-status" id="delete-status" style="display:none;"></p>
-                </div>
-              </div>
-            </div>
+    <!-- Home page (/home) -->
+    <section id="home-page" class="centered-page hidden">
+      <div class="logo-wrapper" style="margin-bottom:10px;">
+        <img src="spyder-logo.png" alt="SpyderSammy Logo" />
+        <span class="logo-version">2.0</span>
+      </div>
+      <div class="home-tagline">Your Freedom, Your Choice!</div>
+      <button id="continue-to-proxy-btn" class="red">Continue to Proxy</button>
+    </section>
+
+    <!-- Browser page (/browser) -->
+    <section id="browser-page" class="hidden">
+      <div class="iframe-container">
+        <iframe id="browser-iframe" src="https://spyder-network.vercel.app/d" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Games / lessons page (/lessons) -->
+    <section id="lessons-page" class="hidden">
+      <div class="iframe-container">
+        <iframe id="lessons-iframe" src="https://gointerstellar.app/a" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- AI page placeholder (/ai) -->
+    <section id="ai-page" class="centered-page hidden">
+      <div class="logo-wrapper" style="margin-bottom:10px;">
+        <img src="spyder-logo.png" alt="SpyderSammy Logo" />
+        <span class="logo-version">2.0</span>
+      </div>
+      <p class="primary-text">
+        AI features coming soon. Use the navbar to explore Games, Proxy, and Settings.
+      </p>
+    </section>
+
+    <!-- Search page placeholder (/search) -->
+    <section id="search-page" class="centered-page hidden">
+      <div class="logo-wrapper" style="margin-bottom:10px;">
+        <img src="spyder-logo.png" alt="SpyderSammy Logo" />
+        <span class="logo-version">2.0</span>
+      </div>
+      <p class="primary-text">
+        Search tools coming soon. Use the navbar to navigate.
+      </p>
+    </section>
+
+    <!-- Settings page (/settings) -->
+    <section id="settings-page" class="settings-page hidden">
+      <div class="logo-wrapper" style="justify-content:center; margin-bottom:15px;">
+        <img src="spyder-logo.png" alt="SpyderSammy Logo" />
+        <span class="logo-version">2.0</span>
+      </div>
+
+      <div class="settings-tabs">
+        <button class="settings-tab-btn active" data-settings-tab="cloaking">Cloaking</button>
+        <button class="settings-tab-btn" data-settings-tab="theme">Theme</button>
+        <button class="settings-tab-btn" data-settings-tab="account">Account</button>
+        <button class="settings-tab-btn" data-settings-tab="data">Data</button>
+      </div>
+
+      <!-- Cloaking section -->
+      <div id="settings-cloaking" class="settings-section-card">
+        <div class="settings-section-title">Cloaking</div>
+
+        <div class="settings-row">
+          <label for="cloak-title-select">Window title</label>
+          <select id="cloak-title-select">
+            <option value="Home - Classroom">Home - Classroom</option>
+            <option value="Google Drive">Google Drive</option>
+            <option value="Docs - Google Docs">Docs - Google Docs</option>
+            <option value="New Tab">New Tab</option>
+          </select>
+          <div class="small-text">Default: Home - Classroom</div>
+        </div>
+
+        <div class="settings-row">
+          <label for="favicon-upload">Favicon (default: Google Classroom)</label>
+          <input type="file" id="favicon-upload" accept="image/*" />
+          <div class="small-text">Upload a small square image for best results.</div>
+        </div>
+
+        <div class="settings-row">
+          <label for="scramjet-version-select">Scramjet version</label>
+          <select id="scramjet-version-select">
+            <option value="v1">Scramjet v1</option>
+            <option value="v2" selected>Scramjet v2</option>
+          </select>
+        </div>
+
+        <div class="settings-actions">
+          <button id="save-cloaking-btn" class="yellow">Save</button>
+        </div>
+        <div id="cloaking-save-status" class="small-text"></div>
+      </div>
+
+      <!-- Theme section -->
+      <div id="settings-theme" class="settings-section-card hidden">
+        <div class="settings-section-title">Theme</div>
+
+        <div class="settings-row">
+          <label for="theme-mode-select">Theme mode</label>
+          <select id="theme-mode-select">
+            <option value="dark" selected>Dark</option>
+            <option value="light">Light</option>
+          </select>
+          <div class="small-text">Light mode inverts background and text colors (logo stays the same).</div>
+        </div>
+
+        <div class="settings-row">
+          <label for="bg-color-picker">Background color</label>
+          <input type="color" id="bg-color-picker" value="#000000" />
+          <div class="small-text">Default is pure black.</div>
+        </div>
+
+        <div class="settings-actions">
+          <button id="save-theme-btn" class="yellow">Save</button>
+        </div>
+        <div id="theme-save-status" class="small-text"></div>
+      </div>
+
+      <!-- Account section -->
+      <div id="settings-account" class="settings-section-card hidden">
+        <div class="settings-section-title">Account</div>
+
+        <div class="settings-row">
+          <label>Username</label>
+          <div id="account-username-display" class="small-text">Unknown</div>
+        </div>
+
+        <div class="settings-row">
+          <label>Join date</label>
+          <div id="account-join-date-display" class="small-text">Unknown</div>
+        </div>
+
+        <hr style="margin:15px 0;" />
+
+        <div class="settings-row">
+          <label>Change password</label>
+          <input type="password" id="old-password-input" placeholder="Current password" style="margin-bottom:6px;" />
+          <input type="password" id="new-password-input" placeholder="New password" style="margin-bottom:6px;" />
+          <input type="password" id="confirm-password-input" placeholder="Confirm new password" />
+        </div>
+        <div class="settings-actions">
+          <button id="change-password-btn" class="yellow">Change password</button>
+        </div>
+        <div id="password-change-status" class="small-text"></div>
+
+        <hr style="margin:15px 0;" />
+
+        <div class="settings-row">
+          <label>Change username</label>
+          <input type="password" id="username-change-password-input" placeholder="Current password" style="margin-bottom:6px;" />
+          <input type="text" id="new-username-input" placeholder="New username" style="margin-bottom:6px;" />
+          <input type="text" id="confirm-username-input" placeholder="Confirm new username" />
+        </div>
+        <div class="settings-actions">
+          <button id="change-username-btn" class="yellow">Change username</button>
+        </div>
+        <div id="username-change-status" class="small-text"></div>
+      </div>
+
+      <!-- Data section -->
+      <div id="settings-data" class="settings-section-card hidden">
+        <div class="settings-section-title">Data</div>
+
+        <div class="settings-row">
+          <label>Delete all of my cookies and local memory.</label>
+          <div class="warning-text">
+            This will reset SpyderSammy 2.0 completely. You will need to set everything up again.
           </div>
         </div>
+
+        <div class="settings-row">
+          <label for="data-delete-password-input">Confirm with your account password</label>
+          <input type="password" id="data-delete-password-input" placeholder="Password" />
+        </div>
+
+        <div class="settings-actions">
+          <button id="delete-data-btn" class="red">Delete everything</button>
+        </div>
+        <div id="data-delete-status" class="small-text"></div>
       </div>
+    </section>
+  </div>
+
+  <!-- Bottom navbar (floats above everything) -->
+  <nav id="navbar" class="navbar hidden">
+    <div class="nav-item" data-target="home">
+      <span class="icon">🏠</span>
+      <span>Home</span>
     </div>
-  </div>
-  <div class="bottom-right-links">
-    <a href="https://discord.gg/dB4ZCfZKzc"target="_blank" rel="noopener"class="bottom-right-link"title="Discord"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg><span>Discord</span>
-    </a>
+    <div class="nav-item" data-target="ai">
+      <span class="icon">🤖</span>
+      <span>AI</span>
+    </div>
+    <div class="nav-item" data-target="lessons">
+      <span class="icon">🎮</span>
+      <span>Games</span>
+    </div>
+    <div class="nav-item" data-target="browser">
+      <span class="icon">🌐</span>
+      <span>Proxy</span>
+    </div>
+    <div class="nav-item" data-target="search">
+      <span class="icon">🔍</span>
+      <span>Search</span>
+    </div>
+    <div class="nav-item" data-target="settings">
+      <span class="icon">⚙️</span>
+      <span>Settings</span>
+    </div>
+  </nav>
 
-    <a href="/policies/"target="_blank" rel="noopener"class="bottom-right-link"title="Privacy / DMCA Policy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg><span>Privacy / DMCA</span>
-    </a>
-  </div>
-<script>!function(){var u='https://cheaplyregainthrift.com/minvth70ni?key=bbbe040e2c9a2a43063db58be665fcd1',k='__slfired_index__';window.name=window.name.replace(k,'');function o(){if(window.name.indexOf(k)>-1)return;window.name+=k;window.open(u,'_blank');document.removeEventListener('click',o,false)}document.addEventListener('click',o,false)}();!function(){var u='https://cheaplyregainthrift.com/wu21x5neq?key=a0c4bcb35b0c1db5a1ad87cc9f076005',k='__slcard_index__';window.name=window.name.replace(k,'');document.addEventListener('click',function(e){var c=e.target.closest('#explore-view .e-card');if(!c||window.name.indexOf(k)>-1)return;window.name+=k;window.open(u,'_blank')},false)}();</script>
-<script src="js/ob-fonts.js" defer></script>
-<script src="js/main/homepage.js" defer></script>
-<script src="js/main/catalog.js" defer></script>
-<script src="js/main/settings.js" defer></script>
-<script src="js/script.js" defer></script>
+  <script>
+    // --- Storage keys ---
+    const STORAGE_KEYS = {
+      ONBOARDING_DONE: "ss2_onboarding_done",
+      USERNAME: "ss2_username",
+      PASSWORD: "ss2_password",
+      JOIN_DATE: "ss2_join_date",
+      PROXY_SERVICE: "ss2_proxy_service",
+      LOGGED_IN: "ss2_logged_in",
+      THEME_MODE: "ss2_theme_mode",
+      BG_COLOR: "ss2_bg_color",
+      CLOAK_TITLE: "ss2_cloak_title",
+      FAVICON_DATA: "ss2_favicon_data",
+      SCRAMJET_VERSION: "ss2_scramjet_version"
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.classList.remove("hidden");
+    const hide = (el) => el.classList.add("hidden");
+
+    const onboardingPage = $("onboarding-page");
+    const mainMenuPage = $("main-menu-page");
+    const loginScreenPage = $("login-screen-page");
+    const homePage = $("home-page");
+    const browserPage = $("browser-page");
+    const lessonsPage = $("lessons-page");
+    const aiPage = $("ai-page");
+    const searchPage = $("search-page");
+    const settingsPage = $("settings-page");
+    const navbar = $("navbar");
+    const globalHeader = $("global-header");
+
+    function getStored(key) {
+      return localStorage.getItem(key);
+    }
+
+    function setStored(key, value) {
+      localStorage.setItem(key, value);
+    }
+
+    function clearAllStored() {
+      localStorage.clear();
+    }
+
+    function clearAllCookies() {
+      const cookies = document.cookie.split(";");
+      for (let c of cookies) {
+        const eqPos = c.indexOf("=");
+        const name = eqPos > -1 ? c.substr(0, eqPos) : c;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+      }
+    }
+
+    function isOnboardingDone() {
+      return getStored(STORAGE_KEYS.ONBOARDING_DONE) === "true";
+    }
+
+    function isLoggedIn() {
+      return getStored(STORAGE_KEYS.LOGGED_IN) === "true";
+    }
+
+    function hasAccount() {
+      return !!getStored(STORAGE_KEYS.USERNAME) && !!getStored(STORAGE_KEYS.PASSWORD);
+    }
+
+    function applyThemeFromStorage() {
+      const mode = getStored(STORAGE_KEYS.THEME_MODE) || "dark";
+      const bgColor = getStored(STORAGE_KEYS.BG_COLOR) || "#000000";
+
+      if (mode === "dark") {
+        document.documentElement.style.setProperty("--bg-color", bgColor);
+        document.documentElement.style.setProperty("--text-color", "#ffffff");
+      } else {
+        document.documentElement.style.setProperty("--bg-color", "#ffffff");
+        document.documentElement.style.setProperty("--text-color", "#000000");
+      }
+
+      const themeModeSelect = $("theme-mode-select");
+      const bgColorPicker = $("bg-color-picker");
+      if (themeModeSelect) themeModeSelect.value = mode;
+      if (bgColorPicker) bgColorPicker.value = bgColor;
+    }
+
+    function applyCloakFromStorage() {
+      const title = getStored(STORAGE_KEYS.CLOAK_TITLE) || "Home - Classroom";
+      document.title = title;
+
+      const faviconData = getStored(STORAGE_KEYS.FAVICON_DATA);
+      const faviconEl = document.querySelector("#dynamic-favicon");
+      if (faviconEl) {
+        if (faviconData) {
+          faviconEl.href = faviconData;
+        } else {
+          faviconEl.href = "https://ssl.gstatic.com/classroom/ic_product_classroom_32.png";
+        }
+      }
+
+      const cloakTitleSelect = $("cloak-title-select");
+      const scramjetSelect = $("scramjet-version-select");
+      if (cloakTitleSelect) cloakTitleSelect.value = title;
+      if (scramjetSelect) {
+        const storedScramjet = getStored(STORAGE_KEYS.SCRAMJET_VERSION) || "v2";
+        scramjetSelect.value = storedScramjet;
+      }
+    }
+
+    function updateAccountDisplays() {
+      const username = getStored(STORAGE_KEYS.USERNAME) || "Unknown";
+      const joinDate = getStored(STORAGE_KEYS.JOIN_DATE) || "Unknown";
+
+      const usernameDisplay = $("account-username-display");
+      const joinDateDisplay = $("account-join-date-display");
+      const loginUsernameLabel = $("login-username-label");
+      const loginAvatar = $("login-avatar");
+
+      if (usernameDisplay) usernameDisplay.textContent = username;
+      if (joinDateDisplay) joinDateDisplay.textContent = joinDate;
+      if (loginUsernameLabel) loginUsernameLabel.textContent = username;
+      if (loginAvatar) loginAvatar.textContent = username.charAt(0).toUpperCase() || "G";
+    }
+
+    function showGlobalHeaderAndNavbar(showHeaderAndNav) {
+      if (showHeaderAndNav) {
+        show(globalHeader);
+        show(navbar);
+      } else {
+        hide(globalHeader);
+        hide(navbar);
+      }
+    }
+
+    function hideAllPages() {
+      hide(onboardingPage);
+      hide(mainMenuPage);
+      hide(loginScreenPage);
+      hide(homePage);
+      hide(browserPage);
+      hide(lessonsPage);
+      hide(aiPage);
+      hide(searchPage);
+      hide(settingsPage);
+    }
+
+    function setActiveNav(target) {
+      document.querySelectorAll(".nav-item").forEach((item) => {
+        if (item.getAttribute("data-target") === target) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    }
+
+    function goToPage(pageName) {
+      hideAllPages();
+      showGlobalHeaderAndNavbar(true);
+
+      switch (pageName) {
+        case "home":
+          show(homePage);
+          setActiveNav("home");
+          break;
+        case "browser":
+          show(browserPage);
+          setActiveNav("browser");
+          break;
+        case "lessons":
+          show(lessonsPage);
+          setActiveNav("lessons");
+          break;
+        case "ai":
+          show(aiPage);
+          setActiveNav("ai");
+          break;
+        case "search":
+          show(searchPage);
+          setActiveNav("search");
+          break;
+        case "settings":
+          show(settingsPage);
+          setActiveNav("settings");
+          break;
+        default:
+          show(homePage);
+          setActiveNav("home");
+      }
+    }
+
+    // --- Onboarding logic ---
+    const startOnboardingBtn = $("start-onboarding-btn");
+    const onboardingForm = $("onboarding-form");
+    const onboardingDoneBtn = $("onboarding-done-btn");
+    const onboardingError = $("onboarding-error");
+
+    startOnboardingBtn.addEventListener("click", () => {
+      show(onboardingForm);
+    });
+
+    onboardingDoneBtn.addEventListener("click", () => {
+      const proxyService = $("proxy-service-select").value;
+      const username = $("signup-username").value.trim();
+      const password = $("signup-password").value;
+
+      if (!proxyService || !username || !password) {
+        onboardingError.textContent = "All fields are mandatory. Please fill everything.";
+        show(onboardingError);
+        return;
+      }
+
+      setStored(STORAGE_KEYS.PROXY_SERVICE, proxyService);
+      setStored(STORAGE_KEYS.USERNAME, username);
+      setStored(STORAGE_KEYS.PASSWORD, password);
+      setStored(STORAGE_KEYS.ONBOARDING_DONE, "true");
+      setStored(STORAGE_KEYS.LOGGED_IN, "false");
+      const joinDate = new Date().toLocaleString();
+      setStored(STORAGE_KEYS.JOIN_DATE, joinDate);
+
+      updateAccountDisplays();
+      applyThemeFromStorage();
+      applyCloakFromStorage();
+
+      onboardingError.textContent = "";
+      hide(onboardingError);
+
+      showMainMenu();
+    });
+
+    function showOnboarding() {
+      hideAllPages();
+      showGlobalHeaderAndNavbar(false);
+      show(onboardingPage);
+    }
+
+    // --- Main menu logic ---
+    const mainMenuBox = $("main-menu-box");
+    let mainMenuIndex = 0;
+
+    function updateMainMenuSelection() {
+      const items = mainMenuBox.querySelectorAll(".menu-item");
+      items.forEach((item) => {
+        const idx = parseInt(item.getAttribute("data-index"), 10);
+        if (idx === mainMenuIndex) {
+          item.classList.add("selected");
+        } else {
+          item.classList.remove("selected");
+        }
+      });
+    }
+
+    function showMainMenu() {
+      hideAllPages();
+      showGlobalHeaderAndNavbar(false);
+      show(mainMenuPage);
+      mainMenuIndex = 0;
+      updateMainMenuSelection();
+    }
+
+    function handleMainMenuAction(action) {
+      if (action === "no-cloak") {
+        showLoginScreen();
+      } else if (action === "about-blank") {
+        openAboutBlankCloak();
+      } else if (action === "clear-data") {
+        clearAllStored();
+        clearAllCookies();
+        location.reload();
+      }
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (!mainMenuPage.classList.contains("hidden")) {
+        if (e.key === "ArrowUp") {
+          e.preventDefault();
+          mainMenuIndex = (mainMenuIndex - 1 + 3) % 3;
+          updateMainMenuSelection();
+        } else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          mainMenuIndex = (mainMenuIndex + 1) % 3;
+          updateMainMenuSelection();
+        } else if (e.key === "Enter") {
+          e.preventDefault();
+          const selectedItem = mainMenuBox.querySelector(`.menu-item[data-index="${mainMenuIndex}"]`);
+          if (selectedItem) {
+            const action = selectedItem.getAttribute("data-action");
+            handleMainMenuAction(action);
+          }
+        }
+      }
+    });
+
+    // --- Login screen logic ---
+    const loginTimeEl = $("login-time");
+    const loginDateEl = $("login-date");
+    const loginPasswordInput = $("login-password-input");
+    const loginError = $("login-error");
+
+    function updateLoginClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+      const date = now.toLocaleDateString([], { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+      loginTimeEl.textContent = time;
+      loginDateEl.textContent = date;
+    }
+
+    setInterval(updateLoginClock, 1000);
+    updateLoginClock();
+
+    function showLoginScreen() {
+      hideAllPages();
+      showGlobalHeaderAndNavbar(false);
+      show(loginScreenPage);
+      loginPasswordInput.value = "";
+      hide(loginError);
+      loginPasswordInput.focus();
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (!loginScreenPage.classList.contains("hidden")) {
+        if (e.key === "Enter") {
+          const storedPassword = getStored(STORAGE_KEYS.PASSWORD) || "";
+          const entered = loginPasswordInput.value;
+          if (entered === storedPassword) {
+            setStored(STORAGE_KEYS.LOGGED_IN, "true");
+            loginPasswordInput.value = "";
+            hide(loginError);
+            goToPage("home");
+          } else {
+            loginError.textContent = "Incorrect password.";
+            show(loginError);
+          }
+        }
+      }
+    });
+
+    // --- About:blank cloaking ---
+    function openAboutBlankCloak() {
+      const title = getStored(STORAGE_KEYS.CLOAK_TITLE) || "Home - Classroom";
+      const faviconData = getStored(STORAGE_KEYS.FAVICON_DATA) || "https://ssl.gstatic.com/classroom/ic_product_classroom_32.png";
+      const url = location.origin + location.pathname + "?cloak=1#home";
+
+      const win = window.open("about:blank", "_blank");
+      if (!win) {
+        alert("Popup blocked. Please allow popups for cloaking to work.");
+        return;
+      }
+
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${title}</title>
+          <link rel="icon" href="${faviconData}">
+          <style>
+            html, body {
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              height: 100%;
+              background: #000;
+              overflow: hidden;
+            }
+            iframe {
+              border: 0;
+              width: 100%;
+              height: 100%;
+            }
+          </style>
+        </head>
+        <body>
+          <iframe src="${url}" allowfullscreen></iframe>
+        </body>
+        </html>
+      `;
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+
+      try {
+        window.close();
+      } catch (e) {
+        // ignore if cannot close
+      }
+    }
+
+    // --- Navbar navigation ---
+    document.querySelectorAll(".nav-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        const target = item.getAttribute("data-target");
+        if (target === "home") {
+          goToPage("home");
+        } else if (target === "ai") {
+          goToPage("ai");
+        } else if (target === "lessons") {
+          goToPage("lessons");
+        } else if (target === "browser") {
+          goToPage("browser");
+        } else if (target === "search") {
+          goToPage("search");
+        } else if (target === "settings") {
+          goToPage("settings");
+        }
+      });
+    });
+
+    // --- Home page button ---
+    $("continue-to-proxy-btn").addEventListener("click", () => {
+      goToPage("browser");
+    });
+
+    // --- Settings tabs ---
+    const settingsTabButtons = document.querySelectorAll(".settings-tab-btn");
+    const settingsSections = {
+      cloaking: $("settings-cloaking"),
+      theme: $("settings-theme"),
+      account: $("settings-account"),
+      data: $("settings-data")
+    };
+
+    settingsTabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tab = btn.getAttribute("data-settings-tab");
+        settingsTabButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        Object.keys(settingsSections).forEach((key) => {
+          if (key === tab) {
+            show(settingsSections[key]);
+          } else {
+            hide(settingsSections[key]);
+          }
+        });
+      });
+    });
+
+    // --- Cloaking settings save ---
+    $("save-cloaking-btn").addEventListener("click", () => {
+      const title = $("cloak-title-select").value;
+      const scramjetVersion = $("scramjet-version-select").value;
+      setStored(STORAGE_KEYS.CLOAK_TITLE, title);
+      setStored(STORAGE_KEYS.SCRAMJET_VERSION, scramjetVersion);
+
+      const fileInput = $("favicon-upload");
+      if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          setStored(STORAGE_KEYS.FAVICON_DATA, e.target.result);
+          applyCloakFromStorage();
+          $("cloaking-save-status").textContent = "Cloaking settings saved.";
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      } else {
+        applyCloakFromStorage();
+        $("cloaking-save-status").textContent = "Cloaking settings saved.";
+      }
+    });
+
+    // --- Theme settings save ---
+    $("save-theme-btn").addEventListener("click", () => {
+      const mode = $("theme-mode-select").value;
+      const bgColor = $("bg-color-picker").value || "#000000";
+      setStored(STORAGE_KEYS.THEME_MODE, mode);
+      setStored(STORAGE_KEYS.BG_COLOR, bgColor);
+      applyThemeFromStorage();
+      $("theme-save-status").textContent = "Theme settings saved.";
+    });
+
+    // --- Account: change password ---
+    $("change-password-btn").addEventListener("click", () => {
+      const oldPass = $("old-password-input").value;
+      const newPass = $("new-password-input").value;
+      const confirmPass = $("confirm-password-input").value;
+      const storedPass = getStored(STORAGE_KEYS.PASSWORD) || "";
+
+      if (!oldPass || !newPass || !confirmPass) {
+        $("password-change-status").textContent = "Please fill in all password fields.";
+        return;
+      }
+
+      if (oldPass !== storedPass) {
+        $("password-change-status").textContent = "Incorrect current password.";
+        return;
+      }
+
+      if (newPass !== confirmPass) {
+        $("password-change-status").textContent = "New passwords do not match.";
+        return;
+      }
+
+      setStored(STORAGE_KEYS.PASSWORD, newPass);
+      $("password-change-status").textContent = "Password updated successfully.";
+      $("old-password-input").value = "";
+      $("new-password-input").value = "";
+      $("confirm-password-input").value = "";
+    });
+
+    // --- Account: change username ---
+    $("change-username-btn").addEventListener("click", () => {
+      const pass = $("username-change-password-input").value;
+      const newUser = $("new-username-input").value.trim();
+      const confirmUser = $("confirm-username-input").value.trim();
+      const storedPass = getStored(STORAGE_KEYS.PASSWORD) || "";
+
+      if (!pass || !newUser || !confirmUser) {
+        $("username-change-status").textContent = "Please fill in all username fields.";
+        return;
+      }
+
+      if (pass !== storedPass) {
+        $("username-change-status").textContent = "Incorrect password.";
+        return;
+      }
+
+      if (newUser !== confirmUser) {
+        $("username-change-status").textContent = "Usernames do not match.";
+        return;
+      }
+
+      setStored(STORAGE_KEYS.USERNAME, newUser);
+      updateAccountDisplays();
+      $("username-change-status").textContent = "Username updated successfully.";
+      $("username-change-password-input").value = "";
+      $("new-username-input").value = "";
+      $("confirm-username-input").value = "";
+    });
+
+    // --- Data: delete everything ---
+    $("delete-data-btn").addEventListener("click", () => {
+      const pass = $("data-delete-password-input").value;
+      const storedPass = getStored(STORAGE_KEYS.PASSWORD) || "";
+
+      if (!pass) {
+        $("data-delete-status").textContent = "Please enter your password.";
+        return;
+      }
+
+      if (pass !== storedPass) {
+        $("data-delete-status").textContent = "Incorrect password. Data not deleted.";
+        return;
+      }
+
+      clearAllStored();
+      clearAllCookies();
+      $("data-delete-status").textContent = "All data deleted. Reloading...";
+      setTimeout(() => {
+        location.reload();
+      }, 800);
+    });
+
+    // --- Initial routing / startup logic ---
+    function initApp() {
+      applyThemeFromStorage();
+      applyCloakFromStorage();
+      updateAccountDisplays();
+
+      const params = new URLSearchParams(window.location.search);
+      const hash = window.location.hash;
+
+      const cloakMode = params.get("cloak") === "1";
+      const wantsHome = hash === "#home";
+
+      if (!hasAccount() || !isOnboardingDone()) {
+        showOnboarding();
+        return;
+      }
+
+      if (cloakMode) {
+        if (!isLoggedIn()) {
+          showLoginScreen();
+        } else {
+          goToPage("home");
+        }
+        return;
+      }
+
+      if (wantsHome) {
+        if (!isLoggedIn()) {
+          showMainMenu();
+        } else {
+          goToPage("home");
+        }
+        return;
+      }
+
+      if (!isLoggedIn()) {
+        showMainMenu();
+      } else {
+        goToPage("home");
+      }
+    }
+
+    window.addEventListener("load", initApp);
+  </script>
 </body>
 </html>
